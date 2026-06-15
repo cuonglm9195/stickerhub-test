@@ -21,10 +21,11 @@
     --red: #ef4444;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
   body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     background: var(--white);
-    height: 100vh;
+    min-height: 320px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -90,6 +91,7 @@
   /* Sticker grid */
   .sticker-area {
     flex: 1;
+    min-height: 180px;
     overflow-y: auto;
     padding: 8px;
     scrollbar-width: thin;
@@ -252,13 +254,17 @@ async function initLiveChat() {
     sdk = window.LiveChat;
     if (!sdk) throw new Error('LiveChat SDK not loaded');
 
-    widget = await sdk.createDetailsWidget();
+    widget = await sdk.createMessageBoxWidget();
 
-    // Lắng nghe khi chat thay đổi
-    widget.on('customer_profile', (profile) => {
-      currentChatId = profile?.chat?.chatId || null;
-      updateFooter();
-    });
+    // Lắng nghe khi chat thay đổi (nếu MessageBox widget hỗ trợ event này)
+    try {
+      widget.on('customer_profile', (profile) => {
+        currentChatId = profile?.chat?.chatId || null;
+        updateFooter();
+      });
+    } catch (e) {
+      console.warn('customer_profile event not supported on this widget:', e);
+    }
 
     setStatus(true);
     await loadPacks();
@@ -370,26 +376,40 @@ async function sendSticker(url, name, el) {
 
   const fullUrl = url.startsWith('http') ? url : window.location.origin + url;
 
+  // Rich message dạng "cards" để sticker hiện ra như ảnh trong ô soạn tin
+  const richMessage = {
+    template_id: 'cards',
+    elements: [
+      { title: name, image: { url: fullUrl } }
+    ]
+  };
+
   try {
-    if (widget && currentChatId) {
-      // Gửi qua LiveChat Agent App SDK
-      await widget.putMessage({
-        text: fullUrl,  // LiveChat sẽ render URL ảnh thành rich message
-      });
-      console.log('✅ Sent via LiveChat SDK:', name);
+    if (widget) {
+      // Điền sticker vào ô soạn tin — agent bấm Send để gửi
+      await widget.putMessage(richMessage);
+      showToast(`🎨 Đã thêm "${name}" — bấm Send để gửi`);
+      console.log('✅ putMessage (rich card):', name);
     } else {
-      // Fallback: copy URL vào clipboard
+      // Fallback: copy URL vào clipboard (SDK chưa khởi tạo được)
       await navigator.clipboard.writeText(fullUrl);
       showToast(`📋 Đã copy link "${name}" vào clipboard`);
     }
   } catch (err) {
-    console.error('Send error:', err);
-    // Fallback clipboard
+    console.error('putMessage (rich card) error:', err);
+    // Fallback 1: thử putMessage dạng text thường (URL)
     try {
-      await navigator.clipboard.writeText(fullUrl);
-      showToast(`📋 Copy link "${name}" — dán vào chat`);
-    } catch(e) {
-      showToast(`Sticker: ${fullUrl}`);
+      await widget.putMessage(fullUrl);
+      showToast(`🎨 Đã thêm link "${name}" — bấm Send để gửi`);
+    } catch (err2) {
+      console.error('putMessage (text) error:', err2);
+      // Fallback 2: copy clipboard
+      try {
+        await navigator.clipboard.writeText(fullUrl);
+        showToast(`📋 Copy link "${name}" — dán vào chat`);
+      } catch (err3) {
+        showToast(`Sticker: ${fullUrl}`);
+      }
     }
   }
 }
