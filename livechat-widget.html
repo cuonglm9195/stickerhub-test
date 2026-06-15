@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StickerHub for LiveChat</title>
+<!-- LiveChat Agent App SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@livechat/agent-app-sdk/dist/agent-app-sdk.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f5f8;
+    --white: #ffffff;
+    --border: #e4e4ec;
+    --accent: #6d28d9;
+    --accent2: #8b5cf6;
+    --accent-light: #ede9fe;
+    --text: #18181b;
+    --muted: #71717a;
+    --green: #059669;
+    --red: #ef4444;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--white);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Header */
+  .header {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    flex-shrink: 0;
+  }
+  .header-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--muted); display: inline-block; margin-right: 6px;
+  }
+  .status-dot.connected { background: var(--green); }
+  .status-text { font-size: 11px; color: var(--muted); }
+
+  /* Search */
+  .search-wrap {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .search-input {
+    width: 100%; padding: 7px 10px 7px 30px;
+    border: 1px solid var(--border); border-radius: 8px;
+    font-size: 12px; font-family: inherit;
+    background: var(--bg); outline: none;
+    transition: border-color 0.15s;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 8px center;
+  }
+  .search-input:focus { border-color: var(--accent); background-color: white; }
+
+  /* Tabs */
+  .tabs-wrap {
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs-wrap::-webkit-scrollbar { display: none; }
+  .tabs { display: flex; padding: 0 8px; gap: 2px; min-width: max-content; }
+  .tab {
+    padding: 8px 12px; font-size: 11px; font-weight: 600;
+    color: var(--muted); cursor: pointer; white-space: nowrap;
+    border-bottom: 2px solid transparent; transition: all 0.15s;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* Sticker grid */
+  .sticker-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  .sticker-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+  .sticker-item {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    transition: all 0.12s;
+    border: 2px solid transparent;
+    background: var(--bg);
+    position: relative;
+  }
+  .sticker-item:hover {
+    background: var(--accent-light);
+    border-color: var(--accent);
+    transform: scale(1.07);
+  }
+  .sticker-item:active { transform: scale(0.95); }
+  .sticker-item img {
+    width: 100%; height: 100%; object-fit: contain;
+    pointer-events: none;
+  }
+  .sticker-tooltip {
+    position: absolute; bottom: calc(100% + 4px); left: 50%;
+    transform: translateX(-50%);
+    background: #18181b; color: white;
+    font-size: 10px; padding: 3px 6px; border-radius: 4px;
+    white-space: nowrap; pointer-events: none;
+    opacity: 0; transition: opacity 0.15s;
+    z-index: 10;
+  }
+  .sticker-item:hover .sticker-tooltip { opacity: 1; }
+
+  /* Empty / Loading */
+  .state-msg {
+    padding: 32px 16px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .state-msg .icon { font-size: 32px; display: block; margin-bottom: 8px; }
+
+  /* Footer */
+  .footer {
+    padding: 8px 12px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .footer-label { font-size: 10px; color: var(--muted); }
+
+  /* Sent flash */
+  @keyframes sentFlash {
+    0% { background: var(--accent-light); border-color: var(--accent); transform: scale(1.15); }
+    100% { background: var(--bg); border-color: transparent; transform: scale(1); }
+  }
+  .sticker-item.sent { animation: sentFlash 0.4s ease; }
+
+  /* Login screen */
+  .login-screen {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+  }
+  .login-screen .logo { font-size: 40px; margin-bottom: 12px; }
+  .login-screen h2 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .login-screen p { font-size: 12px; color: var(--muted); margin-bottom: 20px; line-height: 1.5; }
+  .btn-login {
+    background: var(--accent); color: white; border: none;
+    padding: 10px 24px; border-radius: 10px; font-size: 13px;
+    font-weight: 600; cursor: pointer; font-family: inherit;
+    transition: background 0.15s;
+  }
+  .btn-login:hover { background: var(--accent2); }
+</style>
+</head>
+<body>
+
+<!-- Shown when not connected to LiveChat -->
+<div id="login-screen" class="login-screen" style="display:none">
+  <div class="logo">🎨</div>
+  <h2>StickerHub</h2>
+  <p>Kết nối với LiveChat để bắt đầu gửi sticker trong cuộc trò chuyện</p>
+  <button class="btn-login" onclick="connectLiveChat()">Kết nối LiveChat</button>
+</div>
+
+<!-- Main widget -->
+<div id="main-widget" style="display:none; flex-direction:column; height:100vh">
+
+  <div class="header">
+    <span class="header-title">🎨 StickerHub</span>
+    <div>
+      <span class="status-dot" id="status-dot"></span>
+      <span class="status-text" id="status-text">Đang kết nối...</span>
+    </div>
+  </div>
+
+  <div class="search-wrap">
+    <input class="search-input" type="text" id="search-input"
+      placeholder="Tìm sticker..." oninput="filterStickers(this.value)">
+  </div>
+
+  <div class="tabs-wrap">
+    <div class="tabs" id="tabs-container"></div>
+  </div>
+
+  <div class="sticker-area" id="sticker-area">
+    <div class="state-msg"><span class="icon">⏳</span>Đang tải sticker...</div>
+  </div>
+
+  <div class="footer">
+    <span class="footer-label" id="footer-chat-id">Chưa có chat nào</span>
+    <span class="footer-label" id="sticker-count"></span>
+  </div>
+
+</div>
+
+<script>
+// ── Config ──────────────────────────────────────────────────
+// Thay bằng Client ID thực của bạn từ developers.livechat.com
+const LC_CLIENT_ID = 'ea66a859e5d5555bf082a727b4819178';
+// Tự động detect môi trường: local hay production (gabongv3.mysapo.net)
+const IS_PROD = window.location.hostname.includes('mysapo.net') || window.location.hostname.includes('gabongv');
+const API_BASE = IS_PROD
+  ? 'https://gabongv3.mysapo.net/api'
+  : window.location.origin + '/api';
+
+// ── State ───────────────────────────────────────────────────
+let sdk = null;
+let widget = null;
+let currentChatId = null;
+let packs = [];
+let activePackId = null;
+let allStickers = [];
+
+// ── LiveChat SDK Init ────────────────────────────────────────
+async function initLiveChat() {
+  document.getElementById('main-widget').style.display = 'flex';
+
+  try {
+    // Khởi tạo Agent App SDK
+    sdk = window.LiveChat;
+    if (!sdk) throw new Error('LiveChat SDK not loaded');
+
+    widget = await sdk.createDetailsWidget();
+
+    // Lắng nghe khi chat thay đổi
+    widget.on('customer_profile', (profile) => {
+      currentChatId = profile?.chat?.chatId || null;
+      updateFooter();
+    });
+
+    setStatus(true);
+    await loadPacks();
+
+  } catch (err) {
+    console.error('LiveChat SDK error:', err);
+    // Fallback: chạy standalone (demo mode)
+    setStatus(false, 'Demo mode');
+    await loadPacks();
+  }
+}
+
+function setStatus(connected, label) {
+  const dot = document.getElementById('status-dot');
+  const text = document.getElementById('status-text');
+  dot.className = 'status-dot' + (connected ? ' connected' : '');
+  text.textContent = label || (connected ? 'Đã kết nối' : 'Offline');
+}
+
+function updateFooter() {
+  const el = document.getElementById('footer-chat-id');
+  el.textContent = currentChatId ? `Chat: ${currentChatId.slice(0,12)}...` : 'Chưa có chat nào';
+}
+
+function connectLiveChat() {
+  // Redirect OAuth - dùng khi cần Authorization Code flow
+  const redirectUri = encodeURIComponent(window.location.origin + '/auth/callback');
+  const scopes = encodeURIComponent('chats.conversation:write');
+  window.location.href =
+    `https://accounts.livechat.com/oauth/authorize?response_type=code` +
+    `&client_id=${LC_CLIENT_ID}&redirect_uri=${redirectUri}&scope=${scopes}`;
+}
+
+// ── Load packs từ API ────────────────────────────────────────
+async function loadPacks() {
+  try {
+    const r = await fetch(`${API_BASE}/packs`);
+    packs = await r.json();
+    allStickers = packs.flatMap(p => p.stickers.map(s => ({ ...s, packName: p.name })));
+    renderTabs();
+    if (packs.length) showPack(packs[0].id);
+  } catch (e) {
+    document.getElementById('sticker-area').innerHTML =
+      '<div class="state-msg"><span class="icon">❌</span>Không thể kết nối server</div>';
+  }
+}
+
+// ── Tabs ─────────────────────────────────────────────────────
+function renderTabs() {
+  const container = document.getElementById('tabs-container');
+  container.innerHTML = packs.map(p =>
+    `<div class="tab" id="tab-${p.id}" onclick="showPack('${p.id}')">${p.name}</div>`
+  ).join('');
+}
+
+function showPack(packId) {
+  activePackId = packId;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  const tab = document.getElementById('tab-' + packId);
+  if (tab) {
+    tab.classList.add('active');
+    tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+  const pack = packs.find(p => p.id === packId);
+  if (pack) renderStickers(pack.stickers);
+  document.getElementById('search-input').value = '';
+}
+
+// ── Sticker grid ──────────────────────────────────────────────
+function renderStickers(stickers) {
+  const area = document.getElementById('sticker-area');
+  document.getElementById('sticker-count').textContent = `${stickers.length} stickers`;
+
+  if (!stickers.length) {
+    area.innerHTML = '<div class="state-msg"><span class="icon">🎭</span>Pack này chưa có sticker</div>';
+    return;
+  }
+
+  area.innerHTML = `<div class="sticker-grid">${stickers.map(s => `
+    <div class="sticker-item" onclick="sendSticker('${s.url}', '${s.name}', this)" title="${s.name}">
+      <div class="sticker-tooltip">${s.name}</div>
+      <img src="${s.url}" alt="${s.name}" loading="lazy"
+        onerror="this.parentElement.innerHTML='<span style=font-size:28px>🖼️</span>'">
+    </div>
+  `).join('')}</div>`;
+}
+
+// ── Search ────────────────────────────────────────────────────
+function filterStickers(query) {
+  if (!query.trim()) {
+    const pack = packs.find(p => p.id === activePackId);
+    if (pack) renderStickers(pack.stickers);
+    return;
+  }
+  const q = query.toLowerCase();
+  const results = allStickers.filter(s =>
+    s.name.toLowerCase().includes(q) ||
+    (s.tags || []).some(t => t.toLowerCase().includes(q))
+  );
+  renderStickers(results);
+  document.getElementById('sticker-count').textContent = `${results.length} kết quả`;
+}
+
+// ── Gửi sticker vào chat LiveChat ────────────────────────────
+async function sendSticker(url, name, el) {
+  // Flash animation
+  el.classList.add('sent');
+  setTimeout(() => el.classList.remove('sent'), 400);
+
+  const fullUrl = url.startsWith('http') ? url : window.location.origin + url;
+
+  try {
+    if (widget && currentChatId) {
+      // Gửi qua LiveChat Agent App SDK
+      await widget.putMessage({
+        text: fullUrl,  // LiveChat sẽ render URL ảnh thành rich message
+      });
+      console.log('✅ Sent via LiveChat SDK:', name);
+    } else {
+      // Fallback: copy URL vào clipboard
+      await navigator.clipboard.writeText(fullUrl);
+      showToast(`📋 Đã copy link "${name}" vào clipboard`);
+    }
+  } catch (err) {
+    console.error('Send error:', err);
+    // Fallback clipboard
+    try {
+      await navigator.clipboard.writeText(fullUrl);
+      showToast(`📋 Copy link "${name}" — dán vào chat`);
+    } catch(e) {
+      showToast(`Sticker: ${fullUrl}`);
+    }
+  }
+}
+
+// ── Toast notification ────────────────────────────────────────
+function showToast(msg) {
+  const t = document.createElement('div');
+  t.style.cssText = `
+    position: fixed; bottom: 48px; left: 50%; transform: translateX(-50%);
+    background: #18181b; color: white; padding: 8px 14px;
+    border-radius: 8px; font-size: 12px; z-index: 999;
+    animation: fadeIn 0.2s ease;
+  `;
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 2500);
+}
+
+// ── Start ─────────────────────────────────────────────────────
+initLiveChat();
+</script>
+
+</body>
+</html>

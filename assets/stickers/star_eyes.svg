@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="45" fill="#FFD93D"/>
+  <text x="35" y="47" text-anchor="middle" font-size="22">⭐</text>
+  <text x="65" y="47" text-anchor="middle" font-size="22">⭐</text>
+  <path d="M30 62 Q50 78 70 62" stroke="#333" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="1s" repeatCount="indefinite" origin="50 50" additive="sum"/>
+</svg>

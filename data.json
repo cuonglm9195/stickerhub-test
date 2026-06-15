@@ -1,0 +1,779 @@
+{
+  "packs": [
+    {
+      "id": "pack_capybara",
+      "name": "Capybara Funny",
+      "description": "Capybara đáng yêu trong mọi tình huống",
+      "price": 0,
+      "currency": "USD",
+      "tier": "free",
+      "stickers": [
+        {
+          "id": "stk_capybara_01",
+          "filename": "capybara_01.png",
+          "name": "Love",
+          "tags": [
+            "capybara",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/capybara_01.png",
+          "uploadedAt": 1700010000
+        },
+        {
+          "id": "stk_capybara_02",
+          "filename": "capybara_02.png",
+          "name": "Boba Tea",
+          "tags": [
+            "capybara",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/capybara_02.png",
+          "uploadedAt": 1700010001
+        },
+        {
+          "id": "stk_capybara_03",
+          "filename": "capybara_03.png",
+          "name": "Meditation",
+          "tags": [
+            "capybara",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/capybara_03.png",
+          "uploadedAt": 1700010002
+        },
+        {
+          "id": "stk_capybara_04",
+          "filename": "capybara_04.png",
+          "name": "Yelling",
+          "tags": [
+            "capybara",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/capybara_04.png",
+          "uploadedAt": 1700010003
+        },
+        {
+          "id": "stk_capybara_05",
+          "filename": "capybara_05.png",
+          "name": "Lightning",
+          "tags": [
+            "capybara",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/capybara_05.png",
+          "uploadedAt": 1700010004
+        },
+        {
+          "id": "stk_capybara_06",
+          "filename": "capybara_06.png",
+          "name": "Drama",
+          "tags": [
+            "capybara",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/capybara_06.png",
+          "uploadedAt": 1700010005
+        },
+        {
+          "id": "stk_capybara_07",
+          "filename": "capybara_07.png",
+          "name": "Chạy Đi",
+          "tags": [
+            "capybara",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/capybara_07.png",
+          "uploadedAt": 1700010006
+        },
+        {
+          "id": "stk_capybara_08",
+          "filename": "capybara_08.png",
+          "name": "Stress",
+          "tags": [
+            "capybara",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/capybara_08.png",
+          "uploadedAt": 1700010007
+        },
+        {
+          "id": "stk_capybara_09",
+          "filename": "capybara_09.png",
+          "name": "Milk Drip",
+          "tags": [
+            "capybara",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/capybara_09.png",
+          "uploadedAt": 1700010008
+        }
+      ],
+      "createdAt": 1700010000
+    },
+    {
+      "id": "pack_shiba",
+      "name": "Shiba Inu Reactions",
+      "description": "Shiba Inu với đủ loại cảm xúc",
+      "price": 0,
+      "currency": "USD",
+      "tier": "free",
+      "stickers": [
+        {
+          "id": "stk_shiba_01",
+          "filename": "shiba_01.png",
+          "name": "Surprised",
+          "tags": [
+            "shiba",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/shiba_01.png",
+          "uploadedAt": 1700011000
+        },
+        {
+          "id": "stk_shiba_02",
+          "filename": "shiba_02.png",
+          "name": "Cool",
+          "tags": [
+            "shiba",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/shiba_02.png",
+          "uploadedAt": 1700011001
+        },
+        {
+          "id": "stk_shiba_03",
+          "filename": "shiba_03.png",
+          "name": "In Love",
+          "tags": [
+            "shiba",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/shiba_03.png",
+          "uploadedAt": 1700011002
+        },
+        {
+          "id": "stk_shiba_04",
+          "filename": "shiba_04.png",
+          "name": "Nín",
+          "tags": [
+            "shiba",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/shiba_04.png",
+          "uploadedAt": 1700011003
+        },
+        {
+          "id": "stk_shiba_05",
+          "filename": "shiba_05.png",
+          "name": "No",
+          "tags": [
+            "shiba",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/shiba_05.png",
+          "uploadedAt": 1700011004
+        },
+        {
+          "id": "stk_shiba_06",
+          "filename": "shiba_06.png",
+          "name": "Crying",
+          "tags": [
+            "shiba",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/shiba_06.png",
+          "uploadedAt": 1700011005
+        },
+        {
+          "id": "stk_shiba_07",
+          "filename": "shiba_07.png",
+          "name": "Happy",
+          "tags": [
+            "shiba",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/shiba_07.png",
+          "uploadedAt": 1700011006
+        },
+        {
+          "id": "stk_shiba_08",
+          "filename": "shiba_08.png",
+          "name": "Facepalm",
+          "tags": [
+            "shiba",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/shiba_08.png",
+          "uploadedAt": 1700011007
+        },
+        {
+          "id": "stk_shiba_09",
+          "filename": "shiba_09.png",
+          "name": "Haha",
+          "tags": [
+            "shiba",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/shiba_09.png",
+          "uploadedAt": 1700011008
+        }
+      ],
+      "createdAt": 1700011000
+    },
+    {
+      "id": "pack_emotions",
+      "name": "Funny Faces",
+      "description": "Khuôn mặt cảm xúc vui nhộn cho mọi tình huống",
+      "price": 0,
+      "currency": "USD",
+      "tier": "free",
+      "stickers": [
+        {
+          "id": "stk_001",
+          "filename": "happy.svg",
+          "name": "Happy",
+          "tags": [
+            "happy",
+            "smile",
+            "vui"
+          ],
+          "url": "/assets/stickers/happy.svg",
+          "uploadedAt": 1700000001
+        },
+        {
+          "id": "stk_002",
+          "filename": "laughing.svg",
+          "name": "Laughing",
+          "tags": [
+            "laugh",
+            "lol",
+            "cười"
+          ],
+          "url": "/assets/stickers/laughing.svg",
+          "uploadedAt": 1700000002
+        },
+        {
+          "id": "stk_003",
+          "filename": "love.svg",
+          "name": "In Love",
+          "tags": [
+            "love",
+            "heart",
+            "yêu"
+          ],
+          "url": "/assets/stickers/love.svg",
+          "uploadedAt": 1700000003
+        },
+        {
+          "id": "stk_004",
+          "filename": "cool.svg",
+          "name": "Cool",
+          "tags": [
+            "cool",
+            "sunglasses",
+            "ngầu"
+          ],
+          "url": "/assets/stickers/cool.svg",
+          "uploadedAt": 1700000004
+        },
+        {
+          "id": "stk_005",
+          "filename": "wink.svg",
+          "name": "Wink",
+          "tags": [
+            "wink",
+            "flirt",
+            "nháy mắt"
+          ],
+          "url": "/assets/stickers/wink.svg",
+          "uploadedAt": 1700000005
+        },
+        {
+          "id": "stk_006",
+          "filename": "surprised.svg",
+          "name": "Surprised",
+          "tags": [
+            "wow",
+            "surprised",
+            "ngạc nhiên"
+          ],
+          "url": "/assets/stickers/surprised.svg",
+          "uploadedAt": 1700000006
+        }
+      ],
+      "createdAt": 1700000000
+    },
+    {
+      "id": "pack_reactions",
+      "name": "Quick Reactions",
+      "description": "Phản ứng nhanh cho mọi cuộc trò chuyện",
+      "price": 0,
+      "currency": "USD",
+      "tier": "free",
+      "stickers": [
+        {
+          "id": "stk_007",
+          "filename": "thumbsup.svg",
+          "name": "Thumbs Up",
+          "tags": [
+            "ok",
+            "good",
+            "tốt"
+          ],
+          "url": "/assets/stickers/thumbsup.svg",
+          "uploadedAt": 1700000007
+        },
+        {
+          "id": "stk_008",
+          "filename": "fire.svg",
+          "name": "Fire",
+          "tags": [
+            "fire",
+            "hot",
+            "tuyệt"
+          ],
+          "url": "/assets/stickers/fire.svg",
+          "uploadedAt": 1700000008
+        },
+        {
+          "id": "stk_009",
+          "filename": "party.svg",
+          "name": "Party",
+          "tags": [
+            "party",
+            "celebrate",
+            "ăn mừng"
+          ],
+          "url": "/assets/stickers/party.svg",
+          "uploadedAt": 1700000009
+        },
+        {
+          "id": "stk_010",
+          "filename": "angry.svg",
+          "name": "Angry",
+          "tags": [
+            "angry",
+            "mad",
+            "tức"
+          ],
+          "url": "/assets/stickers/angry.svg",
+          "uploadedAt": 1700000010
+        },
+        {
+          "id": "stk_011",
+          "filename": "sad.svg",
+          "name": "Sad",
+          "tags": [
+            "sad",
+            "cry",
+            "buồn"
+          ],
+          "url": "/assets/stickers/sad.svg",
+          "uploadedAt": 1700000011
+        },
+        {
+          "id": "stk_012",
+          "filename": "crying_laugh.svg",
+          "name": "Crying Laugh",
+          "tags": [
+            "lmao",
+            "haha",
+            "cười chảy nước mắt"
+          ],
+          "url": "/assets/stickers/crying_laugh.svg",
+          "uploadedAt": 1700000012
+        },
+        {
+          "id": "stk_013",
+          "filename": "star_eyes.svg",
+          "name": "Star Eyes",
+          "tags": [
+            "amazing",
+            "wow",
+            "tuyệt vời"
+          ],
+          "url": "/assets/stickers/star_eyes.svg",
+          "uploadedAt": 1700000013
+        }
+      ],
+      "createdAt": 1700000001
+    },
+    {
+      "id": "pack_shiba_tet",
+      "name": "Shiba Tết",
+      "description": "Shiba mừng năm mới",
+      "price": 0,
+      "currency": "USD",
+      "tier": "free",
+      "stickers": [
+        {
+          "id": "stk_shiba_tet_01",
+          "filename": "shiba_tet_01.png",
+          "name": "Há Há",
+          "tags": [
+            "shiba_tet",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/shiba_tet_01.png",
+          "uploadedAt": 1700012000
+        },
+        {
+          "id": "stk_shiba_tet_02",
+          "filename": "shiba_tet_02.png",
+          "name": "Phát Tài Phát Lộc",
+          "tags": [
+            "shiba_tet",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/shiba_tet_02.png",
+          "uploadedAt": 1700012001
+        },
+        {
+          "id": "stk_shiba_tet_03",
+          "filename": "shiba_tet_03.png",
+          "name": "Lì Xì Đi",
+          "tags": [
+            "shiba_tet",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/shiba_tet_03.png",
+          "uploadedAt": 1700012002
+        },
+        {
+          "id": "stk_shiba_tet_04",
+          "filename": "shiba_tet_04.png",
+          "name": "Vạn Sự Như Ý",
+          "tags": [
+            "shiba_tet",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/shiba_tet_04.png",
+          "uploadedAt": 1700012003
+        },
+        {
+          "id": "stk_shiba_tet_05",
+          "filename": "shiba_tet_05.png",
+          "name": "Chúc Mừng Năm Mới",
+          "tags": [
+            "shiba_tet",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/shiba_tet_05.png",
+          "uploadedAt": 1700012004
+        },
+        {
+          "id": "stk_shiba_tet_06",
+          "filename": "shiba_tet_06.png",
+          "name": "Xin Chào",
+          "tags": [
+            "shiba_tet",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/shiba_tet_06.png",
+          "uploadedAt": 1700012005
+        },
+        {
+          "id": "stk_shiba_tet_07",
+          "filename": "shiba_tet_07.png",
+          "name": "Cầu Dừa Đủ Xài",
+          "tags": [
+            "shiba_tet",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/shiba_tet_07.png",
+          "uploadedAt": 1700012006
+        },
+        {
+          "id": "stk_shiba_tet_08",
+          "filename": "shiba_tet_08.png",
+          "name": "Mã Đáo Thành Công",
+          "tags": [
+            "shiba_tet",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/shiba_tet_08.png",
+          "uploadedAt": 1700012007
+        },
+        {
+          "id": "stk_shiba_tet_09",
+          "filename": "shiba_tet_09.png",
+          "name": "Cảm Ơn",
+          "tags": [
+            "shiba_tet",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/shiba_tet_09.png",
+          "uploadedAt": 1700012008
+        }
+      ],
+      "createdAt": 1700012000
+    },
+    {
+      "id": "pack_cute_blob",
+      "name": "Cute Blob",
+      "description": "Nhân vật blob dễ thương nhiều màu sắc",
+      "price": 0,
+      "currency": "USD",
+      "tier": "free",
+      "stickers": [
+        {
+          "id": "stk_blob_01",
+          "filename": "blob_01.png",
+          "name": "Cùng Hát Nào",
+          "tags": [
+            "blob",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/blob_01.png",
+          "uploadedAt": 1700013000
+        },
+        {
+          "id": "stk_blob_02",
+          "filename": "blob_02.png",
+          "name": "Dạ Vâng",
+          "tags": [
+            "blob",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/blob_02.png",
+          "uploadedAt": 1700013001
+        },
+        {
+          "id": "stk_blob_03",
+          "filename": "blob_03.png",
+          "name": "Ôm",
+          "tags": [
+            "blob",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/blob_03.png",
+          "uploadedAt": 1700013002
+        },
+        {
+          "id": "stk_blob_04",
+          "filename": "blob_04.png",
+          "name": "Ngủ Ngon",
+          "tags": [
+            "blob",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/blob_04.png",
+          "uploadedAt": 1700013003
+        },
+        {
+          "id": "stk_blob_05",
+          "filename": "blob_05.png",
+          "name": "Chào Nha",
+          "tags": [
+            "blob",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/blob_05.png",
+          "uploadedAt": 1700013004
+        },
+        {
+          "id": "stk_blob_06",
+          "filename": "blob_06.png",
+          "name": "Cảm Ơn",
+          "tags": [
+            "blob",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/blob_06.png",
+          "uploadedAt": 1700013005
+        },
+        {
+          "id": "stk_blob_07",
+          "filename": "blob_07.png",
+          "name": "Hẹn Gặp Lại",
+          "tags": [
+            "blob",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/blob_07.png",
+          "uploadedAt": 1700013006
+        },
+        {
+          "id": "stk_blob_08",
+          "filename": "blob_08.png",
+          "name": "Chào Tạm Biệt",
+          "tags": [
+            "blob",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/blob_08.png",
+          "uploadedAt": 1700013007
+        },
+        {
+          "id": "stk_blob_09",
+          "filename": "blob_09.png",
+          "name": "Chào Buổi Sáng",
+          "tags": [
+            "blob",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/blob_09.png",
+          "uploadedAt": 1700013008
+        }
+      ],
+      "createdAt": 1700013000
+    },
+    {
+      "id": "pack_meme",
+      "name": "Meme Faces",
+      "description": "Khuôn mặt meme vui nhộn kiểu vẽ tay",
+      "price": 0,
+      "currency": "USD",
+      "tier": "free",
+      "stickers": [
+        {
+          "id": "stk_meme_01",
+          "filename": "meme_01.png",
+          "name": "Haha",
+          "tags": [
+            "meme",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/meme_01.png",
+          "uploadedAt": 1700014000
+        },
+        {
+          "id": "stk_meme_02",
+          "filename": "meme_02.png",
+          "name": "Buồn",
+          "tags": [
+            "meme",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/meme_02.png",
+          "uploadedAt": 1700014001
+        },
+        {
+          "id": "stk_meme_03",
+          "filename": "meme_03.png",
+          "name": "Nghi Ngờ",
+          "tags": [
+            "meme",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/meme_03.png",
+          "uploadedAt": 1700014002
+        },
+        {
+          "id": "stk_meme_04",
+          "filename": "meme_04.png",
+          "name": "Tức Giận",
+          "tags": [
+            "meme",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/meme_04.png",
+          "uploadedAt": 1700014003
+        },
+        {
+          "id": "stk_meme_05",
+          "filename": "meme_05.png",
+          "name": "Xấu Hổ",
+          "tags": [
+            "meme",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/meme_05.png",
+          "uploadedAt": 1700014004
+        },
+        {
+          "id": "stk_meme_06",
+          "filename": "meme_06.png",
+          "name": "Khóc",
+          "tags": [
+            "meme",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/meme_06.png",
+          "uploadedAt": 1700014005
+        },
+        {
+          "id": "stk_meme_07",
+          "filename": "meme_07.png",
+          "name": "Cười Toe",
+          "tags": [
+            "meme",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/meme_07.png",
+          "uploadedAt": 1700014006
+        },
+        {
+          "id": "stk_meme_08",
+          "filename": "meme_08.png",
+          "name": "Chán",
+          "tags": [
+            "meme",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/meme_08.png",
+          "uploadedAt": 1700014007
+        },
+        {
+          "id": "stk_meme_09",
+          "filename": "meme_09.png",
+          "name": "Ngạc Nhiên",
+          "tags": [
+            "meme",
+            "funny",
+            "cute"
+          ],
+          "url": "/assets/stickers/meme_09.png",
+          "uploadedAt": 1700014008
+        }
+      ],
+      "createdAt": 1700014000
+    }
+  ],
+  "subscriptions": [],
+  "users": []
+}

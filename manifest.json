@@ -1,0 +1,22 @@
+{
+  "name": "ChatEmoji Pro",
+  "short_description": "Gửi sticker vui nhộn trong mọi cuộc chat",
+  "description": "ChatEmoji Pro cho phép agent gửi sticker sinh động vào cuộc trò chuyện với khách hàng, giúp tăng tính thân thiện và tương tác.",
+  "app_id": "-_FeEFpDR",
+  "client_id": "ea66a859e5d5555bf082a727b4819178",
+  "version": "1.0.0",
+  "author": "Sapo",
+  "homepage_url": "https://gabongv3.mysapo.net/",
+  "support_email": "support@sapo.vn",
+  "widgets": [
+    {
+      "type": "message_box",
+      "url": "https://gabongv3.mysapo.net/livechat",
+      "label": "StickerHub"
+    }
+  ],
+  "scopes": [
+    "chats.conversation:write",
+    "chats.conversation:read"
+  ]
+}

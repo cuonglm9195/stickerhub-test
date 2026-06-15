@@ -1,0 +1,14 @@
+{
+  "name": "stickerhub-livechat",
+  "version": "1.0.0",
+  "description": "StickerHub - Sticker app tich hop LiveChat voi Admin Panel va he thong thu phi",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}
